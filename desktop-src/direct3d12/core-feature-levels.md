@@ -20,7 +20,7 @@ In general, to create a Direct3D 12 device, you call the [**D3D12CreateDevice**]
 
 If you specify a feature level of 9 through 12, then the device that's returned is a feature-rich device, such as a traditional GPU (which supports a superset of the functionality of a Core device). A Core device is never returned for that range of feature levels.
 
-On the other hand, if you specify a Core feature level (for example, [**D3D_FEATURE_LEVEL::D3D_FEATURE_LEVEL_1_0_CORE**](/windows/desktop/api/d3dcommon/ne-d3dcommon-d3d_feature_level)), then the device that's returned could be feature-rich, or it could be a Core device.
+On the other hand, if you specify a Core feature level (for example, [**D3D_FEATURE_LEVEL::D3D_FEATURE_LEVEL_1_0_CORE**](/windows/desktop/api/d3dcommon/ne-d3dcommon-d3d_feature_level)), then the device that's returned could be feature-rich, or it could be a Core device. However, by specifying the Core feature level, you restrict yourself to it's usage model and restrictions.
 
 ```cpp
 // d3dcommon.h
@@ -37,7 +37,7 @@ The runtime performs conversion of 5.x non DXIL shader models to 6.0 DXIL. So th
 
 ## Resource management model for Core devices
 
-- Supported resource dimensions: raw and structured buffers only (no typed buffers, texture1d/2D, etc.)
+- Supported resource dimensions: raw, constant, and structured buffers only (no typed buffers, textures, acceleration structures, etc.)
 - No support for reserved (tiled) resources
 - No support for custom heaps
 - No support for any of these heap flags:
